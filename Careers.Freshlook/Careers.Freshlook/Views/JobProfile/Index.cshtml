@@ -1,0 +1,42 @@
+﻿@model JobProfileViewModel
+@await Html.PartialAsync("Hero")
+<div class="content-container">
+    <div class="grid-row">
+        <div class="column-desktop-two-thirds">
+            <div class="job-profile-sections">
+                <nav aria-label="skip to your documents" class="jump-links" role="navigation">
+                    <ol class="list list-number job-profile-anchorlinks">
+                        @foreach (var jpSection in Model.Sections)
+                        {
+                            <li>
+                                <a href="#@Utility.GenerateId(jpSection.Heading)">@jpSection.Heading</a>
+                            </li>
+                        }
+                    </ol>
+                </nav>
+                @foreach (var jpSection in Model.Sections)
+                {
+                    <section id="@Utility.GenerateId(jpSection.Heading)">
+                        <h2 class="heading-large">@jpSection.Heading</h2>
+                        @Html.Raw(jpSection.Content)
+                    </section>
+                }
+            </div>
+        </div>
+        <div class="column-desktop-third">
+            <aside class="job-profile-sidebar">
+                <div>
+                    <div>
+                        <h2 class="heading-medium">Not what you're looking for?</h2>
+                    </div>
+                </div>
+                <div class="job-profile-search">
+                    <h3 class="heading-small">Search further careers</h3>
+                    @await Html.PartialAsync("Search", new SearchViewModel { LabelText = "Enter a job title", Id = "job-profile-search-box" })
+                </div>
+            </aside>
+            @await Html.PartialAsync("RelatedCareer")
+            @await Html.PartialAsync("Adviser")
+        </div>
+    </div>
+</div>

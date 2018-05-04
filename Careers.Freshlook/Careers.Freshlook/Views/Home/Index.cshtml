@@ -1,0 +1,32 @@
+﻿@model HomePageViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<header class="homepage-top">
+    <div class="content-container">
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                <div>
+                    <div>
+                        <h1 class="heading-xlarge" id="site-header">Find a career</h1>
+                        <p class="lede">Explore what kind of work is right for you, and take the next steps towards what you want to be</p>
+                    </div>
+                </div>
+                @await Html.PartialAsync("Search")
+
+            </div>
+        </div>
+    </div>
+</header>
+<div class="content-container">
+    <div>
+        <h2 class="heading-medium">Explore job profile</h2>
+        <ul class="homepage-jobcategories">
+        @foreach (var item in Model.JobProfiles)
+        {
+            <li><a href="/jobprofile/@item.Key">@item.Value</a></li>
+
+        }
+        </ul>
+    </div>
+</div>

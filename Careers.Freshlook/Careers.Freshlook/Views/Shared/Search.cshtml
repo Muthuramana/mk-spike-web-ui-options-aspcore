@@ -1,0 +1,13 @@
+﻿@model SearchViewModel
+
+<form id="@Model.Id" asp-controller="Search" asp-action="Search" method="post">
+    <div class="header-search-content">
+        <label asp-for="SearchTerm">@Model.LabelText</label>
+        <div class="search-input-wrapper">
+            <input asp-for="SearchTerm" 
+                   type="search" 
+                   class="search-input js-search-focus focus" />
+        </div>
+        <input class="submit" type="submit" value="Search">
+    </div>
+</form>

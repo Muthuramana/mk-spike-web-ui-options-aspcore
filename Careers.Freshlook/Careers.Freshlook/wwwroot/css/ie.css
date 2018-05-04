@@ -1,0 +1,2 @@
+.filter-form .filter-list input[type=checkbox], .filter-form .filter-list input[type=radio] {
+  visibility: visible !important; }

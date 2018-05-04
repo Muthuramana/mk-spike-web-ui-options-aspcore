@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  careers.freshlook:
+    image: careersfreshlook
+    build:
+      context: .
+      dockerfile: Careers.Freshlook\Dockerfile
