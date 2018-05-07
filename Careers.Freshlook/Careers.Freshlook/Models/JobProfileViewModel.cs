@@ -7,6 +7,7 @@ namespace Careers.Freshlook.Models
 {
     public class JobProfileViewModel
     {
+        public string HeroBannerContent { get; set; }
         public IOrderedEnumerable<JobProfileSectionViewModel> Sections { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Autofac.Extensions.DependencyInjection;
 
 namespace Careers.Freshlook
 {
@@ -19,6 +20,7 @@ namespace Careers.Freshlook
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureServices(s => s.AddAutofac())
                 .UseStartup<Startup>()
                 .Build();
     }
