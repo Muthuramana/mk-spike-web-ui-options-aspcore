@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Autofac;
-using Careers.Freshlook.Services;
+﻿using Autofac;
+using AutoMapper;
+using Careers.Freshlook.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +21,9 @@ namespace Careers.Freshlook
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddAutoMapper();
+            var apiSettings = Configuration.GetSection("ApiSettings");
+            services.Configure<ApiSettings>(apiSettings);
         }
 
         // ConfigureContainer is where you can register things directly
@@ -57,7 +57,6 @@ namespace Careers.Freshlook
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-
             });
         }
     }

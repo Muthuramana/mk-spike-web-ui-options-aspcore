@@ -13,11 +13,11 @@ namespace Careers.Freshlook.Services
     //private readonly ICurrentOppurtunitiesService currentOppurtunitiesService;
     //private readonly ISalaryService salaryService;
     //private readonly IWorkingPatternsService workingPatternsService;
-    public class DummyServices : IJobProfileSynopsisService, IHowToBecomeService, ISkillsService, IWhatYouWillDoService, ICareerPathService, ICurrentOppurtunitiesService, ISalaryService, IWorkingPatternsService
+    public class DummyServices : IWhatYouWillDoService, ICurrentOppurtunitiesService, ISalaryService, IWorkingPatternsService
     {
         public async Task<string> GetCurrentOppurtunitiesAsync(string id)
         {
-            return @"<div class=""grid - row"" id=""appGeneric"">
+            return await Task.FromResult(@"<div class=""grid - row"" id=""appGeneric"">
                               <div class=""column-full"">
                                 <h3 class=""heading-medium"">
                                     Apprenticeships
@@ -46,13 +46,12 @@ namespace Careers.Freshlook.Services
                                     </ul>
                                 </div>
                             </div>
+                            <div class=""dfc-code-jp-vacancyText"">
+                                <p>
+                                    <a href = ""https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch"">Find apprenticeships near you</a>
+                                </p>
+                            </div>
                         </div>
-                        <div class=""dfc-code-jp-vacancyText"">
-                            <p>
-                                <a href = ""https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch"" > Find apprenticeships near you</a>
-                            </p>
-                        </div>
-
                         <div class=""grid-row dfc-code-jp-trainingCourse"">
                             <div class=""column-full"">
                                 <h3 class=""heading-medium"">
@@ -60,14 +59,11 @@ namespace Careers.Freshlook.Services
                                     <span class=""heading-secondary"">In England</span>
                                 </h3>
                             </div>
-                        </div>
-                        <div class=""dfc-code-jp-NoTrainingCoursesText"">
-                            <p>
-                            </p><p>Are you interested in becoming a software developer?</p>
-                            <p>Search for <a href = ""https://dev.nationalcareersservice.org.uk/course-directory/home"" ></ a >< a href=""https://dev.nationalcareersservice.org.uk/course-directory/home"">training courses near you</a>.</p>
-                            <div></div>
-                            <p></p>
-                        </div>";
+                            <div class=""dfc-code-jp-NoTrainingCoursesText"">
+                                <p>Are you interested in becoming a software developer?</p>
+                                <p>Search for <a href = ""https://dev.nationalcareersservice.org.uk/course-directory/home"" ></a><a href=""https://dev.nationalcareersservice.org.uk/course-directory/home"">training courses near you</a>.</p>
+                            </div>
+                        </div>");
         }
 
         public async Task<int> GetExperiencedSalaryAsync(string id)
@@ -77,7 +73,7 @@ namespace Careers.Freshlook.Services
 
         public async Task<string> GetHowToBecomeAsync(string id)
         {
-            return @"<p>You could:</p>
+            return await Task.FromResult(@"<p>You could:</p>
                     <ul>
                         <li>do an apprenticeship</li>
                         <li>do a degree</li>
@@ -106,7 +102,7 @@ namespace Careers.Freshlook.Services
                     <h3>Home study</h3>
                     <p>Many software developers teach themselves and there are many free online learning resources available.</p>
                     <p>Particularly if you have taught yourself, companies will look to see if you are someone who understands programming languages and frameworks, project management and software development methods.</p>
-                    <p>The Chartered Institute for IT (BCS) has <a href=""http://www.bcs.org"">more information about training and qualifications</a>.</p>";
+                    <p>The Chartered Institute for IT (BCS) has <a href=""http://www.bcs.org"">more information about training and qualifications</a>.</p>");
         }
 
         public async Task<int> GetStarterSalaryAsync(string id)
@@ -124,8 +120,24 @@ namespace Careers.Freshlook.Services
             });
         }
 
+        public async Task<string> GetWhatYouWillDoAsync(string id)
+        {
+            return await Task.FromResult(@"<p>Depending on your qualifications, you'll service and repair heating, water and sanitation systems in domestic and commercial premises.</p>
+                                            <p>Your day-to-day tasks may include:</p>
+                                            <ul>
+                                                <li>measuring and planning to give cost and time estimates</li>
+                                                <li>cutting, bending and joining pipes and fittings</li>
+                                                <li>installing water, drainage and heating systems</li>
+                                                <li>finding and fixing faults</li>
+                                                <li>servicing gas and oil-fired central heating systems and radiators</li>
+                                                <li>installing and fixing domestic appliances like showers and washing machines</li>
+                                                <li>dealing with emergency call-outs like boiler breakdowns or blocked drains</li>
+                                                <li>fitting weather-proof materials, joints and flashings to roofs, chimneys and walls</li>
+                                            </ul>
+                                            ");
+        }
 
-        public async Task<WorkingHoursAndPatterns> GetWorkingHoursAndPatterns(string id)
+        public async Task<WorkingHoursAndPatterns> GetWorkingHoursAndPatternsAsync(string id)
         {
             return await Task.FromResult(new WorkingHoursAndPatterns
             {

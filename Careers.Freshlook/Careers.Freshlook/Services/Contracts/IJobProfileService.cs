@@ -7,5 +7,6 @@ namespace Careers.Freshlook.Services
     {
         Task<IEnumerable<JobProfileSection>> GetSectionsAsync(string id);
         Task<string> GetHeroBannerAsync(string id);
+        Task<string> GetPageTitleAsync(string id);
     }
 }

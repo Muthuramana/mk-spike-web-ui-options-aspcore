@@ -4,6 +4,6 @@ namespace Careers.Freshlook.Services
 {
     public interface IWorkingPatternsService
     {
-        Task<WorkingHoursAndPatterns> GetWorkingHoursAndPatterns(string id);
+        Task<WorkingHoursAndPatterns> GetWorkingHoursAndPatternsAsync(string id);
     }
 }

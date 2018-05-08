@@ -40,19 +40,38 @@ namespace Careers.Freshlook.Services
 
         public async Task<IEnumerable<JobProfileSection>> GetSectionsAsync(string id)
         {
+            short order = 1;
             var list = new List<JobProfileSection>
             {
                 new JobProfileSection
                 {
                     Heading = "How to become",
                     Content = await howToBecomeService.GetHowToBecomeAsync(id),
-                    Order = 1
+                    Order = order++,
+                },
+                new JobProfileSection
+                {
+                    Heading = "Skills required",
+                    Content = await skillsService.GetSkillsRequiredAsync(id),
+                    Order = order++,
+                },
+                new JobProfileSection
+                {
+                    Heading = "What you'll do",
+                    Content = await whatYouWillDoService.GetWhatYouWillDoAsync(id),
+                    Order = order++,
+                },
+                new JobProfileSection
+                {
+                    Heading = "Career path and progression",
+                    Content = await careerPathService.GetCareerPathAndProgressionAsync(id),
+                    Order = order++,
                 },
                 new JobProfileSection
                 {
                     Heading = "Current oppurtunity",
                     Content = await currentOppurtunitiesService.GetCurrentOppurtunitiesAsync(id),
-                    Order = 2
+                    Order = order++,
                 }
             };
 
@@ -64,15 +83,21 @@ namespace Careers.Freshlook.Services
             return await GetHeroBannerContentAsync(id);
         }
 
+        public async Task<string> GetPageTitleAsync(string id)
+        {
+            var synopsis = await jobProfileSynopsisService.GetSynopsisAsync(id);
+            return synopsis.Title;
+        }
+
         private async Task<string> GetHeroBannerContentAsync(string id)
         {
             var synopsis = await jobProfileSynopsisService.GetSynopsisAsync(id);
-            var workingHoursAndPatterns = await workingPatternsService.GetWorkingHoursAndPatterns(id);
+            var workingHoursAndPatterns = await workingPatternsService.GetWorkingHoursAndPatternsAsync(id);
 
             return $@"<div class=""grid-row"">
             <div class=""column-desktop-two-thirds"">
                 <h1 class=""heading-xlarge"">{synopsis.Title}</h1>
-                <h2 class=""heading-secondary"">{string.Join(",", synopsis.AlternativeTitles)}</h2>
+                <h2 class=""heading-secondary"">{string.Join(", ", synopsis.AlternativeTitles)}</h2>
                 <p>{synopsis.Overview}</p>
             </div>
         </div>
@@ -95,6 +120,5 @@ namespace Careers.Freshlook.Services
             </div>
         </div>";
         }
-        
     }
 }
