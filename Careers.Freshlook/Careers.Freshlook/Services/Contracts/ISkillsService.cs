@@ -4,6 +4,6 @@ namespace Careers.Freshlook.Services
 {
     public interface ISkillsService
     {
-        Task<string> GetSkillsRequiredAsync(string id);
+        Task<string> TryGetSkillsRequiredAsync(string id);
     }
 }

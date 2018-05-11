@@ -4,6 +4,6 @@ namespace Careers.Freshlook.Services
 {
     public interface ICareerPathService
     {
-        Task<string> GetCareerPathAndProgressionAsync(string id);
+        Task<string> TryGetCareerPathAndProgressionAsync(string id);
     }
 }

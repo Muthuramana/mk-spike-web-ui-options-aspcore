@@ -4,6 +4,6 @@ namespace Careers.Freshlook.Services
 {
     public interface IHowToBecomeService
     {
-        Task<string> GetHowToBecomeAsync(string id);
+        Task<string> TryGetHowToBecomeAsync(string id);
     }
 }

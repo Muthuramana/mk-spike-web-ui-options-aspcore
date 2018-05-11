@@ -4,6 +4,6 @@ namespace Careers.Freshlook.Services
 {
     public interface ICurrentOppurtunitiesService
     {
-        Task<string> GetCurrentOppurtunitiesAsync(string id);
+        Task<string> TryGetCurrentOppurtunitiesAsync(string id);
     }
 }

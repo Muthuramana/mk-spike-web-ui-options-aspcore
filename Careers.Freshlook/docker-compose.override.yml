@@ -1,12 +1,8 @@
-version: '3'
+version: '3.4'
 
 services:
   careers.freshlook:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Staging
     ports:
       - "5000:80"
-networks:
-  default:
-    external:
-      name: nat

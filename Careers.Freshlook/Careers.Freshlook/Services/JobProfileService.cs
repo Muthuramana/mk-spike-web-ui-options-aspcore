@@ -46,35 +46,36 @@ namespace Careers.Freshlook.Services
                 new JobProfileSection
                 {
                     Heading = "How to become",
-                    Content = await howToBecomeService.GetHowToBecomeAsync(id),
+                    Content = await howToBecomeService.TryGetHowToBecomeAsync(id),
                     Order = order++,
                 },
                 new JobProfileSection
                 {
                     Heading = "Skills required",
-                    Content = await skillsService.GetSkillsRequiredAsync(id),
+                    Content = await skillsService.TryGetSkillsRequiredAsync(id),
                     Order = order++,
                 },
                 new JobProfileSection
                 {
                     Heading = "What you'll do",
-                    Content = await whatYouWillDoService.GetWhatYouWillDoAsync(id),
+                    Content = await whatYouWillDoService.TryGetWhatYouWillDoAsync(id),
                     Order = order++,
                 },
                 new JobProfileSection
                 {
                     Heading = "Career path and progression",
-                    Content = await careerPathService.GetCareerPathAndProgressionAsync(id),
+                    Content = await careerPathService.TryGetCareerPathAndProgressionAsync(id),
                     Order = order++,
                 },
                 new JobProfileSection
                 {
                     Heading = "Current oppurtunity",
-                    Content = await currentOppurtunitiesService.GetCurrentOppurtunitiesAsync(id),
+                    Content = await currentOppurtunitiesService.TryGetCurrentOppurtunitiesAsync(id),
                     Order = order++,
                 }
             };
 
+            list.RemoveAll(s => string.IsNullOrEmpty(s.Content));
             return await Task.FromResult(list);
         }
 
@@ -108,8 +109,8 @@ namespace Careers.Freshlook.Services
                     <span>(per year)</span>
                 </h4>
                 <div class=""job-profile-salary job-profile-heroblock-content"">
-                    <h5 class=""dfc-code-jpsstarter"">{await salaryService.GetStarterSalaryAsync(id):C}<span>Starter</span></h5>
-                    <h5 class=""dfc-code-jpsexperienced"">{await salaryService.GetExperiencedSalaryAsync(id):C}<span>Experienced</span></h5>
+                    <h5 class=""dfc-code-jpsstarter"">{await salaryService.GetStarterSalaryAsync(id)}<span>Starter</span></h5>
+                    <h5 class=""dfc-code-jpsexperienced"">{await salaryService.GetExperiencedSalaryAsync(id)}<span>Experienced</span></h5>
                 </div>
             </div>
             <div id=""WorkingHours"" class=""column-30 job-profile-heroblock"">

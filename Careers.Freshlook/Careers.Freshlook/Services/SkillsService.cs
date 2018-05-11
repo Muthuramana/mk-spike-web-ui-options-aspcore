@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Careers.Freshlook.Services
 {
@@ -17,15 +18,30 @@ namespace Careers.Freshlook.Services
         {
             this.configuration = configuration.Value;
         }
-        public async Task<string> GetSkillsRequiredAsync(string id)
+        public async Task<string> TryGetSkillsRequiredAsync(string id)
         {
-            //using (var client = new HttpClient())
-            //{
-            //    var result = await client.GetStringAsync($"{configuration["endpoint_skillssection"]}/{id}");
-
-            //}
-
-            return await Task.FromResult("skills");
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var response = await client.GetAsync($"{configuration.SkillsEndpoint}/{id}");
+                    var result = await response.Content.ReadAsStringAsync();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var poco = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
+                        return poco["Skills"];
+                    }
+                    else
+                    {
+                        return "Skill service is unavailable at the moment. Try again later.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return "Skill service is unavailable at the moment. Try again later.";
+                    //throw new Exception($"Failed to get skills from {configuration.SkillsEndpoint}/{id}", ex);
+                }
+            }
         }
     }
 }

@@ -4,6 +4,6 @@ namespace Careers.Freshlook.Services
 {
     public interface IWhatYouWillDoService
     {
-        Task<string> GetWhatYouWillDoAsync(string id);
+        Task<string> TryGetWhatYouWillDoAsync(string id);
     }
 }

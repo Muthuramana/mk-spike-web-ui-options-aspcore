@@ -1,8 +1,8 @@
-version: '3'
+version: '3.4'
 
 services:
   careers.freshlook:
-    image: careersfreshlook
+    image: ${DOCKER_REGISTRY}careersfreshlook
     build:
       context: .
-      dockerfile: Careers.Freshlook\Dockerfile
+      dockerfile: Careers.Freshlook/Dockerfile
