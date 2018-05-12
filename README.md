@@ -8,9 +8,10 @@ To run this you would need to follow these steps
 3. Create a dir skillsservice and in the cmd -> `git clone https://github.com/Muthuramana/DFCSkillsMicroservice.git`
 4. Create a dir skillsrepo and in the cmd -> `git clone https://github.com/roysbailey/dfc.skills.data.git`
 
-5. Follow the instructions in the readme file for skillsrepo
-6. `cd skillsservice\DFCSkillsMicroservice\DFC.Microservices.Skills -> docker-compose -p dfcspike up -d --build`
-6. `cd jpservice\SitefinityMicroservice\DFC.Sitefinity.MicroService.API -> docker-compose -p dfcspike up -d --build`
-6. `cd frontend\mk-spike-web-ui-options-aspcore\Careers.Freshlook -> docker-compose -p dfcspike up -d --build`
+5. `cd skillsrepo\dfc.skills.data\dfc.skills.repo.docker -> docker-compose -p dfcspike up -d --build`
+6. Follow the instructions in the readme file for skillsrepo for populating the repository
+7. `cd skillsservice\DFCSkillsMicroservice\DFC.Microservices.Skills -> docker-compose -p dfcspike up -d --build`
+8. `cd jpservice\SitefinityMicroservice\DFC.Sitefinity.MicroService.API -> docker-compose -p dfcspike up -d --build`
+9. `cd frontend\mk-spike-web-ui-options-aspcore\Careers.Freshlook -> docker-compose -p dfcspike up -d --build`
 
 All the service should be up and running, you can access the frontend at http://localhost:5000
