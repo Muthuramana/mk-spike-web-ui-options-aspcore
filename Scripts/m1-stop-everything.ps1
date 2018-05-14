@@ -1,0 +1,1 @@
+docker ps -aq | ForEach-Object { docker stop $_ }
