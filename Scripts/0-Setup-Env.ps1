@@ -1,6 +1,6 @@
 #Create repo under
-$loc = "C:\Data\Temp"
-$currentloc = [string](Get-Location)
+$loc = [string](Get-Location)
+$currentloc = $loc
 
 try
 {
