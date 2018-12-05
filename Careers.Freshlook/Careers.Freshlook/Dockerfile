@@ -6,7 +6,7 @@ FROM microsoft/aspnetcore-build:2.0 AS build
 WORKDIR /src
 COPY Careers.Freshlook.sln ./
 COPY Careers.Freshlook/Careers.Freshlook.csproj Careers.Freshlook/
-RUN dotnet restore -nowarn:msb3202,nu1503
+RUN dotnet restore Careers.Freshlook/Careers.Freshlook.csproj -nowarn:msb3202,nu1503
 COPY . .
 WORKDIR /src/Careers.Freshlook
 RUN dotnet build -c Release -o /app
