@@ -8,7 +8,7 @@ try
     Remove-Item $loc\Frontend -recurse -Force -ErrorAction SilentlyContinue
     Remove-Item $loc\ContentService -recurse -Force -ErrorAction SilentlyContinue
     Remove-Item $loc\SkillsContentService -recurse -Force -ErrorAction SilentlyContinue
-    Remove-Item .\SkillsContentService-v2 -recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item $loc\SkillsContentService-v2 -recurse -Force -ErrorAction SilentlyContinue
     Remove-Item $loc\SkillsRepo -recurse -Force -ErrorAction SilentlyContinue
 
     mkdir Frontend -Force
