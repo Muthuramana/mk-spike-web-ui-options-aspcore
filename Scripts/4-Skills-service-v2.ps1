@@ -5,12 +5,12 @@ try
 
     $parentloc = (Get-Item $currentloc).Parent.Parent.Parent.FullName
 
-    Set-Location $parentloc
-    Remove-Item .\SkillsContentService-v2 -recurse -Force -ErrorAction SilentlyContinue
-    mkdir SkillsContentService-v2 -Force
+    #Set-Location $parentloc
+    #Remove-Item .\SkillsContentService-v2 -recurse -Force -ErrorAction SilentlyContinue
+    #mkdir SkillsContentService-v2 -Force
 
     Set-Location $parentloc/SkillsContentService-v2
-    git clone https://github.com/trevorkapswarah/DFCSkillsMicroservice.git
+    #git clone https://github.com/trevorkapswarah/DFCSkillsMicroservice.git
 
     Set-Location .\DFCSkillsMicroservice\DFC.Microservices.Skills
     docker-compose -p dfcspike up -d
