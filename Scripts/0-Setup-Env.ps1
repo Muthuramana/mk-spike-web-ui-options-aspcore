@@ -10,12 +10,14 @@ try
     Remove-Item $loc\SkillsContentService -recurse -Force -ErrorAction SilentlyContinue
     Remove-Item $loc\SkillsContentService-v2 -recurse -Force -ErrorAction SilentlyContinue
     Remove-Item $loc\SkillsRepo -recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item $loc\UMSMicroService -recurse -Force -ErrorAction SilentlyContinue
 
     mkdir Frontend -Force
     mkdir ContentService -Force
     mkdir SkillsContentService -Force
     mkdir SkillsContentService-v2 -Force
     mkdir SkillsRepo -Force
+    mkdir UMSMicroService -Force
 
     Set-Location $loc\Frontend
     git clone https://github.com/Muthuramana/mk-spike-web-ui-options-aspcore.git
@@ -47,6 +49,11 @@ try
     Set-Location $loc\SkillsRepo\dfc.skills.data
     npm install
     node .\server.js
+
+    Set-Location $loc\UMSMicroService
+    git clone https://github.com/Muthuramana/DFCUMSMicroservice.git
+    Set-Location .\DFCUMSMicroservice\DFC.UMS.Microservice
+    docker-compose -p dfcspike up -d --build    
 
     &"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" http://localhost:5000
 }
