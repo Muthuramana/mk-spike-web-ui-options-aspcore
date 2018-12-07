@@ -24,6 +24,9 @@ namespace Careers.Freshlook
             services.AddAutoMapper();
             var apiSettings = Configuration.GetSection("ApiSettings");
             services.Configure<ApiSettings>(apiSettings);
+            // Adds a default in-memory implementation of IDistributedCache.
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // ConfigureContainer is where you can register things directly
@@ -40,6 +43,7 @@ namespace Careers.Freshlook
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSession();
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
